@@ -15,8 +15,8 @@ public class DrawPalette extends JComponent {
 
         this.palette = initPalette;
         this.size = squareSize;
-        this.x = 120;
-        this.y = 50;
+        this.x = x0;
+        this.y = y0;
 
     }
 

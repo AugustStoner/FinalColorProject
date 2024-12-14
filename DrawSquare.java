@@ -23,7 +23,7 @@ public class DrawSquare extends JPanel {
         super.paintComponent(g);
 
         g.setColor(color);
-        g.fillRect(this.x, this.y, this.size, this.size); // x, y, width, height
+        g.fillRect(x, y, size, size); // x, y, width, height
     }
 
     public static void main(String[] args) {

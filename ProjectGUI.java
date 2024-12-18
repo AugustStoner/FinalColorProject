@@ -63,7 +63,7 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         Dimension inputHSBDimension = new Dimension(80, 20);
 
         colorSelectionPanel = new JPanel();
-        //colorSelectionPanel.setLayout(new GridLayout(3,1));
+        colorSelectionPanel.setLayout(new BoxLayout(colorSelectionPanel, BoxLayout.Y_AXIS));
         JPanel activeColorPanel = new JPanel();
         color1Active = new JRadioButton("", true);
         color2Active = new JRadioButton();
@@ -87,7 +87,7 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         activeColorPanel.setBorder(new TitledBorder("Active color"));
         colorSelectionPanel.add(activeColorPanel);
         
-        //colorSelectionPanel.add(drawPalette);
+        colorSelectionPanel.add(drawPalette);
 
         //GridBagLayout paletteLayout = new GridBagLayout();
         //paletteLayout.setConstraints(this, constraints);
@@ -435,7 +435,7 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
                 setGreen.setText(Integer.toString(palette.getG(activeColor)));
                 setBlue.setText(Integer.toString(palette.getB(activeColor)));
 
-                //drawPalette.repaint();
+                drawPalette.repaint();
                 
                 //colorPalette.repaint();
                 //clearPalette();

@@ -6,10 +6,7 @@ import java.awt.event.ItemListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
-
 
 public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
 
@@ -18,14 +15,9 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
     public int activeColor;
     public Map<JRadioButton, Integer> activeButtonsMap;
     JPanel colorSelectionPanel;
-    JPanel colorPalettePanel;
-    JPanel colorPalette;
     JRadioButton color1Active;
     JRadioButton color2Active;
     JRadioButton color3Active;
-    JCheckBox color1Select;
-    JCheckBox color2Select;
-    JCheckBox color3Select;
     JTextField setRed;
     JTextField setGreen;
     JTextField setBlue;
@@ -50,7 +42,7 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         this.palette = new Build(3);
         palette.setColor(0, Color.white);
         palette.setColor(1, Color.gray);
-        this.drawPalette = new DrawPalette(palette, 20, 0, 0);
+        this.drawPalette = new DrawPalette(palette, 20);
         this.activeColor = 0;
         this.activeButtonsMap = new HashMap<>();
 
@@ -89,81 +81,13 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         
         colorSelectionPanel.add(drawPalette);
 
-        //GridBagLayout paletteLayout = new GridBagLayout();
-        //paletteLayout.setConstraints(this, constraints);
-        colorPalettePanel = new JPanel(new GridLayout(2,1));
-        colorPalettePanel.add(new JLabel("Current Palette"));
-        colorPalettePanel.setPreferredSize(new Dimension(320, 100));
-        colorPalettePanel.setBorder(new LineBorder(Color.blue));
-        colorPalette = new JPanel(new FlowLayout());
-        //colorPalette.add(drawPalette);
-        //drawPalette.setPreferredSize(new Dimension(200, 24));
-        //colorPalettePanel.add(colorPalette);
-        //colorSelectionPanel.add(colorPalettePanel);
-        
-        //draw();
-        /* 
-        colorPalettePanel.add(colorPalette);
-        colorSelectionPanel.add(colorPalettePanel);
-        
-        */
         add(colorSelectionPanel);
-        /* 
-        JPanel selectedColorPanel = new JPanel();
-        color1Select = new JCheckBox();
-        color2Select = new JCheckBox();
-        color3Select = new JCheckBox();
-        selectedColorPanel.add(color1Select);
-        selectedColorPanel.add(color2Select);
-        selectedColorPanel.add(color3Select);
-        selectedColorPanel.setBorder(new TitledBorder("Selected color(s)"));
-        
-        colorSelectionPanel.add(selectedColorPanel);
-        */
 
         calculateRGB = new JButton("Calculate");
-        //calculateRGB.setBounds(50, 150, 95, 30);
         calculateRGB.addActionListener(this);
 
         calculateHSB = new JButton("Calculate");
-        //calculateHSB.setBounds()
         calculateHSB.addActionListener(this);
-
-        //colorSelectionPanel.add(calculateRGB);
-        /*
-        JPanel selectedColorPanel = new JPanel();
-        JCheckBox selectionCheckBox1 = new JCheckBox();
-        JCheckBox selectionCheckBox2 = new JCheckBox();
-        JCheckBox selectionCheckBox3 = new JCheckBox();
-        selectedColorPanel.add(selectionCheckBox1);
-        selectedColorPanel.add(selectionCheckBox2);
-        selectedColorPanel.add(selectionCheckBox3);
-        selectedColorPanel.setBorder(new TitledBorder("Selected color(s)"));
-        colorSelectionPanel.add(selectedColorPanel);
-        */
-
-        
-
-
-        //JTabbedPane colorProfile = new JTabbedPane();
-        //colorProfile.setLayout(new GridLayout(2, 1));
-        /* 
-        JPanel hsbPanel = new JPanel();
-        JPanel rgbPanel = new JPanel();
-        hsbPanel.add(new JLabel("Modifiers for Color Mixing"));
-        rgbPanel.add(new JLabel("Modifiers for Color Mixing"));
-        String[] hsbListItems = new String[] {"Hue", "Saturation", "Brightness"};
-        String[] rgbListItems = new String[] {"Red", "Green", "Blue"};
-        JList<String> hsbList = new JList<>(hsbListItems);
-        JList<String> rgbList = new JList<>(rgbListItems);
-        hsbPanel.add(hsbList);
-        rgbPanel.add(rgbList);
-        colorProfile.addTab("HSB", hsbPanel);
-        colorProfile.addTab("RGB", rgbPanel);
-        add(colorProfile);
-        */
-
-        
 
         JTabbedPane colorTabbedPane = new JTabbedPane();
         JPanel rgbPane = new JPanel(new GridLayout(4,1));
@@ -185,18 +109,9 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         rgbSetValues.add(setRedPanel);
         rgbSetValues.add(setGreenPanel);
         rgbSetValues.add(setBluePanel);
-        /*
-        rgbSetValues.add(new JLabel("R:"));
-        rgbSetValues.add(setRed);
-        rgbSetValues.add(new JLabel("G:"));
-        rgbSetValues.add(setGreen);
-        rgbSetValues.add(new JLabel("B:"));
-        rgbSetValues.add(setBlue);
-        */
         setRed.setPreferredSize(inputRGBDimension);
         setGreen.setPreferredSize(inputRGBDimension);
         setBlue.setPreferredSize(inputRGBDimension);
-        //rgbSetValues.setPreferredSize(new Dimension(250, 50));
 
         JPanel rgbChangeValues = new JPanel(threeByOne);
         rgbChangeValues.setBorder(new TitledBorder("Shift values ----- (-255, 255)"));
@@ -218,7 +133,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         changeRed.setPreferredSize(inputRGBDimension);
         changeGreen.setPreferredSize(inputRGBDimension);
         changeBlue.setPreferredSize(inputRGBDimension);
-
 
         JPanel rgbScaleValues = new JPanel(threeByOne);
         rgbScaleValues.setBorder(new TitledBorder("Scale values"));
@@ -271,7 +185,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         hsbSetValues.add(setSaturationPanel);
         hsbSetValues.add(setBrightnessPanel);
 
-
         JPanel hsbChangeValues = new JPanel(threeByOne);
         hsbChangeValues.setBorder(new TitledBorder("Shift values ----- (-1.0, 1.0)"));
         changeHue = new JTextField(); 
@@ -308,7 +221,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
         hsbScaleValues.add(scaleBrightnessPanel);
         hsbScaleValues.setBorder(new TitledBorder("Scale Saturation, Brightness values"));
 
-
         hsbPane.add(hsbSetValues);
         hsbPane.add(hsbChangeValues);
         hsbPane.add(hsbScaleValues);
@@ -316,29 +228,9 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
 
         colorTabbedPane.add("Modify Active HSB", hsbPane);
         add(colorTabbedPane);
-        
     
         setVisible(true);
-
     }
-
-    public void clearPalette(){
-        colorPalette.removeAll();
-    }
-
-    public void draw(){
-        for (int i = 0; i < palette.getSize(); i++) {
-            DrawSquare square = new DrawSquare(palette.getColor(i), 0, 0, 100);
-            square.setPreferredSize(new Dimension(24, 24));
-            square.setBorder(new LineBorder(Color.green));
-            colorPalette.add(square);
-        }
-        colorPalettePanel.add(colorPalette);
-        colorSelectionPanel.add(colorPalettePanel);
-        add(colorSelectionPanel);
-
-    }
-
     public int getInt(JTextField text){
         return Integer.parseInt(text.getText());
     }
@@ -357,7 +249,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
             setHue.setText(Float.toString(palette.getHue(activeColor)));
             setSaturation.setText(Float.toString(palette.getSaturation(activeColor)));
             setBrightness.setText(Float.toString(palette.getBrightness(activeColor)));
-
         }
     }
 
@@ -436,10 +327,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
                 setBlue.setText(Integer.toString(palette.getB(activeColor)));
 
                 drawPalette.repaint();
-                
-                //colorPalette.repaint();
-                //clearPalette();
-                //draw();
                 palette.printColor(activeColor);
             } catch (Exception E){
 
@@ -511,9 +398,6 @@ public class ProjectGUI extends JFrame implements ActionListener, ItemListener {
                 setBrightness.setText(Float.toString(palette.getBrightness(activeColor)));
 
                 drawPalette.repaint();
-                //colorPalette.repaint();
-                //clearPalette();
-                //draw();
                 palette.printColor(activeColor);
             } catch (Exception e) {
             }

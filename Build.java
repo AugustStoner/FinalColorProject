@@ -15,16 +15,6 @@ public class Build {
         }
     }
 
-    //changed palette initialization to fill all colors with black
-    /* 
-    public void addColor(int r, int g, int b){
-        if (this.palette.size()<this.maxSize) {
-            Color newColor = new Color(r, g, b);
-            this.palette.add(newColor);
-        }
-    }
-    */
-
     /****************/
     /*   Setters    */
     /****************/
@@ -79,9 +69,9 @@ public class Build {
 
     public void changeR(int i, int xr){
         int r = getR(i);
-        if (((r + xr) <= 255) && ((r + xr) > 0)) { r += xr; /*System.out.println("no issue, change r as given");*/ }
-        else if ((r + xr) <= 0) { r = 0; /*System.out.println("r ended negative, set r=0"); */}
-        else { r = 255; /* System.out.println("r out of range, set to max value"); */ }
+        if (((r + xr) <= 255) && ((r + xr) > 0)) { r += xr; }
+        else if ((r + xr) <= 0) { r = 0; }
+        else { r = 255; }
         
         setR(i, r);
     }
@@ -239,10 +229,6 @@ public class Build {
 
 
     public static void main(String[] args) {
-        //JFrame frame = new JFrame("Draw Palette");
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
 
         Build newPalette = new Build(5);
         newPalette.setColor(0, 125, 120, 70);
@@ -253,23 +239,7 @@ public class Build {
         Color orange = Color.orange;
         newPalette.setColor(4, orange);
         newPalette.printColor(4);
-
-        /* 
-        for (int i = 0; i < newPalette.getSize(); i++) {
-
-            DrawSquare square = new DrawSquare(newPalette.getColor(i), newPalette.getX(), newPalette.getY(), 50);
-            newPalette.setPos((newPalette.getX()+60), newPalette.getY());
-            frame.add(square);
-        }
-        */
             
-        
-        
-
-
-        //frame.setSize(1024, 768);
-        //frame.setVisible(true);
-
     }
 
 }

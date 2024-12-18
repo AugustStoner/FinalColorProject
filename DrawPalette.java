@@ -10,14 +10,11 @@ public class DrawPalette extends JComponent {
     public int x;
     public int y;
     
-    public DrawPalette(Build initPalette, int squareSize, int x0, int y0){
+    public DrawPalette(Build initPalette, int squareSize){
         super();
 
         this.palette = initPalette;
         this.size = squareSize;
-        this.x = x0;
-        this.y = y0;
-
     }
 
 
@@ -52,7 +49,7 @@ public class DrawPalette extends JComponent {
         newPalette.setColor(8,32,77,27);
         newPalette.setColor(9, 18, 77, 12);
 
-        DrawPalette view = new DrawPalette(newPalette, 50, 100, 100);
+        DrawPalette view = new DrawPalette(newPalette, 50);
         frame.add(view);
         frame.setSize(1024, 768);
         frame.setVisible(true);

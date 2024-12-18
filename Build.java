@@ -159,23 +159,6 @@ public class Build {
         changeB(i, -x);
     }
 
-    /***************************/
-    /*   Comparison Methods    */
-    /***************************/
-
-    public Color compareR(int one, int two){
-        // need to deal with objects being equal
-        // input/output index value or color Objects?
-
-        int r1 = getR(one);
-        int r2 = getR(two);
-        if (r1 > r2) {
-            return getColor(one);
-        } else {
-            return getColor(two);
-        }
-    }
-
     /****************/
     /*   Getters    */
     /****************/
